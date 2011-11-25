@@ -1,4 +1,5 @@
 require "./lib/diffie.rb"
+require "benchmark"
 describe "Diffie" do
   before(:all) do
     @alice = Diffie.new
@@ -39,17 +40,23 @@ describe "Diffie" do
     @eve.beta = 339
     #eve is set up with given values
     #now brute force a and b
-    @eve.a = 0
-    until @eve.alpha == square_multi(@eve.p,@eve.g,@eve.a)  
-      @eve.a += 1
+    time = Benchmark.realtime do
+      @eve.a = 0
+      until @eve.alpha == square_multi(@eve.p,@eve.g,@eve.a)  
+        @eve.a += 1
+      end
     end
-    puts @eve.a
+    puts "Eve calculated #{@eve.a} for a. Time needed #{time * 1000} milliseconds"
 
-    @eve.b = 0
-    until @eve.beta == square_multi(@eve.p,@eve.g,@eve.b)  
-      @eve.b += 1
+    time = Benchmark.realtime do
+      @eve.b = 0
+      until @eve.beta == square_multi(@eve.p,@eve.g,@eve.b)  
+        @eve.b += 1
+      end
     end
     puts @eve.b
+    puts "Eve calculated #{@eve.b} for b. Time needed #{time * 1000} milliseconds"
+
   end
 end
 
