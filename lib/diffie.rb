@@ -1,5 +1,4 @@
 # Diffie Hellman calculator
-
 class Diffie
   attr_accessor :a, :g, :p, :alpha,:beta, :b,:k
 end
