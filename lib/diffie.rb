@@ -8,7 +8,7 @@ def square_multi(p,g,secret)
   # g ** secret % p
   result = 1
   binary_array = secret.to_s(2).split("").map{|x| x.to_i}
-  binary_array.each_with_index do |x,i|
+  binary_array.each do |x|
     first = (g ** x)
     result = ( first * result ** 2) % p
   end
