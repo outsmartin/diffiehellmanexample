@@ -10,8 +10,8 @@ group :development do
 end
 
 group :development, :test do
-  gem 'libnotify'
-  gem 'rb-inotify'
+  #gem 'libnotify'
+  #gem 'rb-inotify'
   gem 'cucumber'
   gem 'rspec'
 end
